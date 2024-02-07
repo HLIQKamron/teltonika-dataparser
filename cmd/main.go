@@ -26,6 +26,9 @@ func main() {
 	CheckError(err)
 
 	defer db.Close()
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "Hello World"})
+	})
 	r.GET("/longlat", func(c *gin.Context) {
 		data, err := db.Query("select * from longlat")
 		if err != nil {
