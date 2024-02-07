@@ -99,5 +99,5 @@ func main() {
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/headers", headers)
 
-	http.ListenAndServe(":4444", nil)
+	http.ListenAndServe("0.0.0.0:4444", nil)
 }
