@@ -1,7 +1,16 @@
+# Use the official Golang image as a base
 FROM golang:alpine
 
-WORKDIR  /app 
+# Set the working directory inside the container
+WORKDIR /app
 
-COPY . .   
+# Copy the entire contents of the current directory into the container's working directory
+COPY . .
 
-RUN ["go","run","cmd/main.go"]
+# Build the Go application
+
+# Expose the port the application runs on
+EXPOSE 8081
+
+# Command to run the executable
+CMD ["go","run","cmd/main.go"]
