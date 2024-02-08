@@ -41,7 +41,7 @@ func main() {
 		// 		c.String(http.StatusInternalServerError, err.Error())
 		// 		return
 		// 	}
-		// 	c.JSON(http.StatusOK, gin.H{"lon": lon, "lat": lat})
+		c.JSON(http.StatusOK, gin.H{"lon": "lon", "lat": "lat"})
 		// }
 	})
 	r.POST("/longlat", func(c *gin.Context) {
