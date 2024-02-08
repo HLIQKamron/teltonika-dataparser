@@ -18,6 +18,11 @@ const (
 func main() {
 	r := gin.Default()
 
+	var (
+		lat  = "default"
+		long = "default"
+	)
+
 	// psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 
 	// db, err := sql.Open("postgres", psqlconn)
@@ -41,13 +46,13 @@ func main() {
 		// 		c.String(http.StatusInternalServerError, err.Error())
 		// 		return
 		// 	}
-		c.JSON(http.StatusOK, gin.H{"lon": "lon", "lat": "lat"})
+		c.JSON(http.StatusOK, gin.H{"lon": long, "lat": lat})
 		// }
 	})
 	r.POST("/longlat", func(c *gin.Context) {
 
-		// lat := c.Query("lat")
-		// lon := c.Query("lon")
+		lat = c.Query("lat")
+		long = c.Query("lon")
 
 		// // updateStmt := fmt.Sprintf(`insert into "longlat"("longitude", "latitude") values('%s', '%s')`, lon, lat)
 		// updateStmt := fmt.Sprintf(`update "longlat" set "longitude" = '%s', "latitude" = '%s'`, lon, lat)
@@ -59,7 +64,7 @@ func main() {
 		// 	})
 		// 	return
 		// }
-		// c.JSON(http.StatusOK, gin.H{"status": "success"})
+		c.JSON(http.StatusOK, gin.H{"status": "success"})
 	})
 
 	// insert
